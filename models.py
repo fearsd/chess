@@ -15,6 +15,9 @@ class BaseFigure:
         else:
             return 'black'
 
+    def __str__(self):
+        return self.full_name
+
 
 class Rook(BaseFigure):
 
@@ -33,6 +36,18 @@ class Rook(BaseFigure):
                 if l == self.coord[1] and not str(n) + l == self.coord and str(n) + l not in moves:
                     moves.append(str(n) + l)
 
+        i = 0
+        while i <= len(moves) - 1:
+            print(moves[i])
+            if isinstance(field.field[moves[i]], BaseFigure):
+                if field.field[moves[i]].team == self.team:
+                    del moves[i]
+                    i -= 1
+                else:
+                    i += 1
+            else:
+                i += 1
+
         return moves
 
 
@@ -47,7 +62,7 @@ class GameField:
 
         for n in range(1, 9):
             for l in self.letters:
-                
+
                 # sets rooks for their places
                 if (n == 1 and l == 'a') or (n == 1 and l == 'h') or (n == 8 and l == 'a') or (n == 8 and l == 'h'):
                     field[str(n) + l] = BaseFigure(str(n) + l, 'rook', 'R')
