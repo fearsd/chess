@@ -42,15 +42,15 @@ class GameField:
 
                 # sets elephants for their places
                 if (n == 1 and l == 'a') or (n == 1 and l == 'h') or (n == 8 and l == 'a') or (n == 8 and l == 'h'):
-                    field[str(n) + l] = 'elephant'
+                    field[str(n) + l] = 'rook'
 
                 # sets horses for their places
                 elif (n == 1 and l == 'b') or (n == 1 and l == 'g') or (n == 8 and l == 'b') or (n == 8 and l == 'g'):
-                    field[str(n) + l] = 'horse'
+                    field[str(n) + l] = 'knight'
 
                 # sets soldats for their places
                 elif (n == 1 and l == 'c') or (n == 1 and l == 'f') or (n == 8 and l == 'c') or (n == 8 and l == 'f'):
-                    field[str(n) + l] = 'soldat'
+                    field[str(n) + l] = 'bishop'
 
                 # sets queens for their places
                 elif (n == 1 and l == 'd') or (n == 8 and l == 'e'):
@@ -62,10 +62,10 @@ class GameField:
 
                 # sets peshkas for their places
                 elif n == 2 or n == 7:
-                    field[str(n) + l] = 'peshka'
+                    field[str(n) + l] = 'pawn'
 
                 else:
-                    field[str(n) + l] = ''
+                    field[str(n) + l] = '*'
 
         return field
 
