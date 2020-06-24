@@ -42,7 +42,6 @@ class Rook(BaseFigure):
             if isinstance(field.field[moves[i]], BaseFigure):
                 if field.field[moves[i]].team == self.team:
                     del moves[i]
-                    i -= 1
                 else:
                     i += 1
             else:
