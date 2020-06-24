@@ -1,14 +1,13 @@
-# TODO: make class for figure
-
 WHITE = (1, 2)
 BLACK = (7, 8)
 
 class BaseFigure:
 
-    def __init__(self, coord, name):
+    def __init__(self, coord, full_name, short_name):
         self.coord = coord
         self.team = self._set_team()
-        self.name = name
+        self.full_name = full_name
+        self.short_name = short_name
 
     def _set_team(self):
         if int(self.coord[0]) in WHITE:
@@ -17,14 +16,25 @@ class BaseFigure:
             return 'black'
 
 
-class Elephant(BaseFigure):
+class Rook(BaseFigure):
 
     def perfome_move(self, field, coords_to):
-        available_coords_to_move = 
+        available_coords_to_move = self._available_moves(field)
     
     def _available_moves(self, field):
-        pass
-        # TODO: продумать логику выявления ходов на основании положения слона
+        moves = []
+        for n in range(1, 9):
+            for l in field.letters:
+                if n == int(self.coord[0]) and not str(n) + l == self.coord:
+                    moves.append(str(n) + l)
+
+        for n in range(1, 9):
+            for l in field.letters:
+                if l == self.coord[1] and not str(n) + l == self.coord and str(n) + l not in moves:
+                    moves.append(str(n) + l)
+
+        return moves
+
 
 class GameField:
 
@@ -37,50 +47,51 @@ class GameField:
 
         for n in range(1, 9):
             for l in self.letters:
-
-                # TODO: set appropriate names for figures after googling chess
-
-                # sets elephants for their places
+                
+                # sets rooks for their places
                 if (n == 1 and l == 'a') or (n == 1 and l == 'h') or (n == 8 and l == 'a') or (n == 8 and l == 'h'):
-                    field[str(n) + l] = 'rook'
+                    field[str(n) + l] = BaseFigure(str(n) + l, 'rook', 'R')
 
-                # sets horses for their places
+                # sets knights for their places
                 elif (n == 1 and l == 'b') or (n == 1 and l == 'g') or (n == 8 and l == 'b') or (n == 8 and l == 'g'):
-                    field[str(n) + l] = 'knight'
+                    field[str(n) + l] = BaseFigure(str(n) + l, 'knight', 'k')
 
-                # sets soldats for their places
+                # sets bishops for their places
                 elif (n == 1 and l == 'c') or (n == 1 and l == 'f') or (n == 8 and l == 'c') or (n == 8 and l == 'f'):
-                    field[str(n) + l] = 'bishop'
+                    field[str(n) + l] = BaseFigure(str(n) + l, 'bishop', 'B')
 
                 # sets queens for their places
                 elif (n == 1 and l == 'd') or (n == 8 and l == 'e'):
-                    field[str(n) + l] = 'queen'
+                    field[str(n) + l] = BaseFigure(str(n) + l, 'queen', 'Q')
 
                 # sets kings for their places
                 elif (n == 1 and l == 'e') or (n == 8 and l == 'd'):
-                    field[str(n) + l] = 'king'
+                    field[str(n) + l] = BaseFigure(str(n) + l, 'king', 'K')
 
-                # sets peshkas for their places
+                # sets pawns for their places
                 elif n == 2 or n == 7:
-                    field[str(n) + l] = 'pawn'
+                    field[str(n) + l] = BaseFigure(str(n) + l, 'pawn', 'p')
 
                 else:
-                    field[str(n) + l] = '*'
+                    field[str(n) + l] = '.'
 
         return field
 
     def print_field(self):
         self.__put_coords_in_list()
         old_row = 1
-        print('  ', end='')
+        print('      ', end='')
         for l in self.letters:
-            print(l, end='      ')
-        print('\n')
+            print(l, end='    ')
+        print('\n\n')
         j = 1
         for i in range(0, 64, 8):
-            print(j, end=' ')
+            print(j, end='     ')
             for key in self.keys[i:i+8]:
-                print(self.field[key], end=' ')
+                if isinstance(self.field[key], BaseFigure):
+                    print(self.field[key].short_name, end='    ')
+                else:
+                    print(self.field[key], end='    ')
             print('\n')
             j += 1
 
