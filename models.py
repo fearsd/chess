@@ -12,8 +12,10 @@ class BaseFigure:
     def _set_team(self):
         if int(self.coord[0]) in WHITE:
             return 'white'
-        else:
+        elif int(self.coord[0]) in BLACK:
             return 'black'
+        else:
+            return 'white'
 
     def __str__(self):
         return self.full_name
@@ -38,7 +40,6 @@ class Rook(BaseFigure):
 
         i = 0
         while i <= len(moves) - 1:
-            print(moves[i])
             if isinstance(field.field[moves[i]], BaseFigure):
                 if field.field[moves[i]].team == self.team:
                     del moves[i]
@@ -46,6 +47,8 @@ class Rook(BaseFigure):
                     i += 1
             else:
                 i += 1
+
+        # TODO: add removing moves if figure need to jump over other figure to move 
 
         return moves
 
