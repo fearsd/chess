@@ -18,4 +18,4 @@ class BaseFigure:
             return 'white'
 
     def __str__(self):
-        return self.full_name
+        return self.full_name + ' ' + self.coord
