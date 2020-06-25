@@ -50,6 +50,10 @@ class Rook(BaseFigure):
 
         # TODO: add removing moves if figure need to jump over other figure to move 
 
+        for index, move in enumerate(moves):
+            if int(move[0]) > int(self.coord[0]) and move[1] == self.coord[1]:
+                if isinstance(field.field[move], BaseFigure):
+                    del moves[index + 1]
         return moves
 
 
