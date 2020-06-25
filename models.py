@@ -27,6 +27,8 @@ class Rook(BaseFigure):
         available_coords_to_move = self._available_moves(field)
     
     def _available_moves(self, field):
+
+        # finding all coords whose rook can move to if these coord would be empty
         moves = []
         for n in range(1, 9):
             for l in field.letters:
@@ -38,6 +40,7 @@ class Rook(BaseFigure):
                 if l == self.coord[1] and not str(n) + l == self.coord and str(n) + l not in moves:
                     moves.append(str(n) + l)
 
+        # deleting coords that contains teammates
         i = 0
         while i <= len(moves) - 1:
             if isinstance(field.field[moves[i]], BaseFigure):
@@ -48,12 +51,27 @@ class Rook(BaseFigure):
             else:
                 i += 1
 
-        # TODO: add removing moves if figure need to jump over other figure to move 
+        # finding coords that under rook
+        down = []
+        for move in moves:
+            if int(move[0]) > int(self.coord[0]):
+                down.append(move)
+
+        # deleting not available moves on downside
+        i = 0
+        while i <= len(down) - 1:
+            if isinstance(field.field[down[i]], BaseFigure):
+                try:
+                    del down[i + 1]
+                except IndexError:
+                    break
+            else:
+                i += 1
 
         for index, move in enumerate(moves):
-            if int(move[0]) > int(self.coord[0]) and move[1] == self.coord[1]:
-                if isinstance(field.field[move], BaseFigure):
-                    del moves[index + 1]
+            if move not in down and int(move[0]) > int(self.coord[0]):
+                del moves[index]
+
         return moves
 
 
