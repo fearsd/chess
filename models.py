@@ -15,7 +15,7 @@ class BaseFigure:
         elif int(self.coord[0]) in BLACK:
             return 'black'
         else:
-            return 'black'
+            return 'white'
 
     def __str__(self):
         return self.full_name
@@ -73,11 +73,13 @@ class Rook(BaseFigure):
                 del moves[index]
 
 
+        # finding coords that over rook
         top = []
         for move in moves:
             if int(move[0]) < int(self.coord[0]):
                 top.append(move)
         
+        # deleting not available moves on topside
         i = len(top) - 1
         while i >= 0:
             if isinstance(field.field[top[i]], BaseFigure):
@@ -92,6 +94,37 @@ class Rook(BaseFigure):
             if move not in top and int(move[0]) < int(self.coord[0]):
                 del moves[index]
 
+        horizontal = []
+        for move in moves:
+            if int(move[0]) == int(self.coord[0]):
+                horizontal.append(move)
+
+        left = []
+        for move in horizontal:
+            if ord(move[1]) < ord(self.coord[1]):
+                left.append(move)
+
+        i = ord(self.coord[1]) - 1
+        while i >= 97:
+            if isinstance(field.field[str(self.coord[0]) + chr(i)], BaseFigure):
+                if not i == 97:
+                    try:
+                        del left[i - 98]
+                        i -= 1
+                    except IndexError:
+                        break
+                else:
+                    i -= 1
+            else:
+                i -= 1
+        
+        i = 0
+        while i <= len(moves) - 1:
+            if moves[i] not in left and ord(moves[i][1]) < ord(self.coord[1]) and int(moves[i][0]) == int(self.coord[0]):
+                del moves[i]
+            else:
+                i += 1
+        
         return moves
 
 
