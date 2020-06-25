@@ -1,4 +1,6 @@
-from models import *
+from models.basefigure import BaseFigure
+from models.gamefield import GameField
+from models.rook import Rook
 
 chess_field = GameField()
 
