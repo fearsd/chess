@@ -130,7 +130,33 @@ class Rook(BaseFigure):
                 del moves[i]
             else:
                 i += 1
+
+        right = []
+        for move in horizontal:
+            if ord(move[1]) > ord(self.coord[1]):
+                right.append(move)
         
+
+        i = ord(self.coord[1]) + 1
+        while i <= 104:
+            if isinstance(field.field[str(self.coord[0]) + chr(i)], BaseFigure):
+                if not i == 104:
+                    try:
+                        del right[i - 100]
+                    except IndexError:
+                        break
+                else:
+                    i += 1
+            else:
+                i += 1
+        
+        i = 0
+        while i <= len(moves) - 1:
+            if moves[i] not in right and ord(moves[i][1]) > ord(self.coord[1]) and int(moves[i][0]) == int(self.coord[0]):
+                del moves[i]
+            else:
+                i += 1
+
         return moves
 
 
