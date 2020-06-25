@@ -15,7 +15,7 @@ class BaseFigure:
         elif int(self.coord[0]) in BLACK:
             return 'black'
         else:
-            return 'white'
+            return 'black'
 
     def __str__(self):
         return self.full_name
@@ -70,6 +70,26 @@ class Rook(BaseFigure):
 
         for index, move in enumerate(moves):
             if move not in down and int(move[0]) > int(self.coord[0]):
+                del moves[index]
+
+
+        top = []
+        for move in moves:
+            if int(move[0]) < int(self.coord[0]):
+                top.append(move)
+        
+        i = len(top) - 1
+        while i >= 0:
+            if isinstance(field.field[top[i]], BaseFigure):
+                if not i == 0:
+                    del top[i - 1]
+                else:
+                    break
+            else:
+                i -= 1
+        
+        for index, move in enumerate(moves):
+            if move not in top and int(move[0]) < int(self.coord[0]):
                 del moves[index]
 
         return moves
