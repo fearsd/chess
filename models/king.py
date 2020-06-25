@@ -52,5 +52,16 @@ class King(BaseFigure):
             moves.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1))
         except KeyError as e:
             pass
+
+        try:
+            if field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]))].team == self.team and int(self.coord[0] + 1) >= 9:
+                pass
+            else:
+                moves.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1])))
+        except AttributeError as e:
+            moves.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1])))
+        except KeyError as e:
+            pass
+        
         return moves
 
