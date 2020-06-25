@@ -7,6 +7,6 @@ chess_field = GameField()
 
 chess_field.print_field()
 
-k = King('4h', 'king', 'K')
+k = King('4e', 'king', 'K')
 print(k.team)
 print(k._available_moves(chess_field))
