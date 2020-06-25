@@ -68,9 +68,12 @@ class Rook(BaseFigure):
             else:
                 i += 1
 
-        for index, move in enumerate(moves):
-            if move not in down and int(move[0]) > int(self.coord[0]):
-                del moves[index]
+        i = 0
+        while i <= len(moves) - 1:
+            if moves[i] not in down and int(moves[i][0]) > int(self.coord[0]):
+                del moves[i]
+            else:
+                i += 1
 
 
         # finding coords that over rook
@@ -90,9 +93,12 @@ class Rook(BaseFigure):
             else:
                 i -= 1
         
-        for index, move in enumerate(moves):
-            if move not in top and int(move[0]) < int(self.coord[0]):
-                del moves[index]
+        i = 0
+        while i <= len(moves) - 1:
+            if moves[i] not in top and int(moves[i][0]) < int(self.coord[0]):
+                del moves[i]
+            else:
+                i += 1
 
         horizontal = []
         for move in moves:
