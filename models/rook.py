@@ -24,17 +24,6 @@ class Rook(BaseFigure):
                 if l == self.coord[1] and not str(n) + l == self.coord and str(n) + l not in moves:
                     moves.append(str(n) + l)
 
-        # deleting coords that contains teammates
-        i = 0
-        while i <= len(moves) - 1:
-            if isinstance(field.field[moves[i]], BaseFigure):
-                if field.field[moves[i]].team == self.team:
-                    del moves[i]
-                else:
-                    i += 1
-            else:
-                i += 1
-
         # finding coords that under rook
         down = []
         for move in moves:
@@ -138,6 +127,17 @@ class Rook(BaseFigure):
         while i <= len(moves) - 1:
             if moves[i] not in right and ord(moves[i][1]) > ord(self.coord[1]) and int(moves[i][0]) == int(self.coord[0]):
                 del moves[i]
+            else:
+                i += 1
+
+        # deleting coords that contains teammates
+        i = 0
+        while i <= len(moves) - 1:
+            if isinstance(field.field[moves[i]], BaseFigure):
+                if field.field[moves[i]].team == self.team:
+                    del moves[i]
+                else:
+                    i += 1
             else:
                 i += 1
 
