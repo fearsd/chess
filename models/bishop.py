@@ -4,7 +4,8 @@ class Bishop(BaseFigure):
 
     def _available_moves(self, field):
         moves = []
-        keys = rev = list(field.field.keys())
+        keys = list(field.field.keys())
+        rev = list(field.field.keys())
         rev.reverse()
 
 
@@ -24,4 +25,36 @@ class Bishop(BaseFigure):
 
         moves += wn.copy()
 
+
+        en = []
+        try:
+            if field.field[str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1)].team == self.team:
+                en.append(str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1))
+        except AttributeError as e:
+            en.append(str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1))
+        except KeyError as e:
+            pass
+        
+        if not len(en) == 0:
+            for c in rev:
+                if (int(c[0]) < int(en[-1][0]) and ord(c[1]) > ord(en[-1][1])) and (ord(c[1]) - ord(en[-1][1]) == 1):
+                    en.append(c)
+
+        moves += en.copy()
+
+        es = []
+        try:
+            if field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1)].team == self.team:       
+                es.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1))
+        except AttributeError as e:
+            es.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1))
+        except KeyError as e:
+            pass
+
+        if not len(es) == 0:
+            for c in keys:
+                if (int(c[0]) > int(es[-1][0]) and ord(c[1]) > ord(es[-1][1])):
+                    es.append(c)
+        
+        moves += es.copy()
         return moves
