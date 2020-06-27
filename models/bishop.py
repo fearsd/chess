@@ -57,7 +57,6 @@ class Bishop(BaseFigure):
                     break
             else:
                 i += 1
-        print(en)
 
         es = []
         try:
@@ -72,6 +71,18 @@ class Bishop(BaseFigure):
             for c in keys:
                 if (int(c[0]) > int(es[-1][0]) and ord(c[1]) > ord(es[-1][1])):
                     es.append(c)
+
+        i = 0
+        while i <= len(es) - 1:
+            if isinstance(field.field[es[i]], BaseFigure):
+                try:
+                    del es[i + 1]
+                except IndexError:
+                    break
+            else:
+                i += 1
+        
+        print(es)
         
 
         ws = []
