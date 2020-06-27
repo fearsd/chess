@@ -14,7 +14,7 @@ class King(BaseFigure):
 
         moves = []
         try:
-            if field.field[str(int(self.coord[0]) - 1) + self.coord[1]].team == self.team and int(self.coord[0]) - 1 <= 0:
+            if field.field[str(int(self.coord[0]) - 1) + self.coord[1]].team == self.team:
                 pass
             else:
                 moves.append(str(int(self.coord[0]) - 1) + self.coord[1])
@@ -24,7 +24,7 @@ class King(BaseFigure):
             pass
 
         try:
-            if field.field[str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1)].team == self.team and int(self.coord[0]) - 1 <= 0:
+            if field.field[str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1)].team == self.team:
                 pass
             else:
                 moves.append(str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1))
@@ -34,7 +34,7 @@ class King(BaseFigure):
             pass
 
         try:
-            if field.field[str(int(self.coord[0])) + chr(ord(self.coord[1]) + 1)].team == self.team and int(self.coord[0]) - 1 <= 0:
+            if field.field[str(int(self.coord[0])) + chr(ord(self.coord[1]) + 1)].team == self.team:
                 pass
             else:
                 moves.append(str(int(self.coord[0])) + chr(ord(self.coord[1]) + 1))
@@ -44,7 +44,7 @@ class King(BaseFigure):
             pass
 
         try:
-            if field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1)].team == self.team and int(self.coord[0] + 1) >= 9:       
+            if field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1)].team == self.team:       
                 pass
             else:
                 moves.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1))
@@ -54,7 +54,7 @@ class King(BaseFigure):
             pass
 
         try:
-            if field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]))].team == self.team and int(self.coord[0] + 1) >= 9:
+            if field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]))].team == self.team:
                 pass
             else:
                 moves.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1])))
@@ -64,7 +64,7 @@ class King(BaseFigure):
             pass
 
         try:
-            if field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1)].team == self.team and int(self.coord[0] + 1) >= 9:
+            if field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1)].team == self.team:
                 pass
             else:
                 moves.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1))
@@ -74,7 +74,7 @@ class King(BaseFigure):
             pass
 
         try:
-            if field.field[str(int(self.coord[0])) + chr(ord(self.coord[1]) - 1)].team == self.team and int(self.coord[0] + 1) >= 9:
+            if field.field[str(int(self.coord[0])) + chr(ord(self.coord[1]) - 1)].team == self.team:
                 pass
             else:
                 moves.append(str(int(self.coord[0])) + chr(ord(self.coord[1]) - 1))
@@ -94,4 +94,3 @@ class King(BaseFigure):
             pass
 
         return moves
-
