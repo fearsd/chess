@@ -82,8 +82,6 @@ class Bishop(BaseFigure):
             else:
                 i += 1
         
-        print(es)
-        
 
         ws = []
         try:
@@ -99,6 +97,16 @@ class Bishop(BaseFigure):
                 if (int(c[0]) > int(ws[-1][0]) and ord(c[1]) < ord(ws[-1][1])) and (ord(c[1]) - ord(ws[-1][1]) == -1):
                     ws.append(c)
 
+        i = 0
+        while i <= len(ws) - 1:
+            if isinstance(field.field[ws[i]], BaseFigure):
+                try:
+                    del ws[i + 1]
+                except IndexError:
+                    break
+            else:
+                i += 1
+        
 
         moves += wn.copy()
         moves += en.copy()
