@@ -17,5 +17,13 @@ class BaseFigure:
         else:
             return 'white'
 
+    def perfome_move(self, field, coords_to):
+        available_coords_to_move = self._available_moves(field)
+        if coords_to not in available_coords_to_move:
+            return 'Not available move'
+        else:
+            self.coord = coords_to
+            return 'Moved!'
+
     def __str__(self):
         return self.full_name + ' ' + self.coord
