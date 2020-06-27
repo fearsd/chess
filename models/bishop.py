@@ -57,4 +57,22 @@ class Bishop(BaseFigure):
                     es.append(c)
         
         moves += es.copy()
+
+        ws = []
+        try:
+            if field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1)].team == self.team:
+                ws.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1))
+        except AttributeError as e:
+            ws.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1))
+        except KeyError as e:
+            pass
+
+        if not len(ws) == 0:
+            for c in keys:
+                if (int(c[0]) > int(ws[-1][0]) and ord(c[1]) < ord(ws[-1][1])) and (ord(c[1]) - ord(ws[-1][1]) == -1):
+                    ws.append(c)
+
+        moves += ws.copy()
+
+
         return moves
