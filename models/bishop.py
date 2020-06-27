@@ -23,7 +23,15 @@ class Bishop(BaseFigure):
                 if (int(c[0]) < int(wn[-1][0]) and ord(c[1]) < ord(wn[-1][1])):
                     wn.append(c)
 
-        moves += wn.copy()
+        i = 0
+        while i <= len(wn) - 1:
+            if isinstance(field.field[wn[i]], BaseFigure):
+                try:
+                    del wn[i + 1]
+                except IndexError:
+                    break
+            else:
+                i += 1
 
 
         en = []
@@ -40,7 +48,6 @@ class Bishop(BaseFigure):
                 if (int(c[0]) < int(en[-1][0]) and ord(c[1]) > ord(en[-1][1])) and (ord(c[1]) - ord(en[-1][1]) == 1):
                     en.append(c)
 
-        moves += en.copy()
 
         es = []
         try:
@@ -56,7 +63,6 @@ class Bishop(BaseFigure):
                 if (int(c[0]) > int(es[-1][0]) and ord(c[1]) > ord(es[-1][1])):
                     es.append(c)
         
-        moves += es.copy()
 
         ws = []
         try:
@@ -72,6 +78,10 @@ class Bishop(BaseFigure):
                 if (int(c[0]) > int(ws[-1][0]) and ord(c[1]) < ord(ws[-1][1])) and (ord(c[1]) - ord(ws[-1][1]) == -1):
                     ws.append(c)
 
+
+        moves += wn.copy()
+        moves += en.copy()
+        moves += es.copy()
         moves += ws.copy()
 
 

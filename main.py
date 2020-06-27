@@ -8,5 +8,5 @@ chess_field = GameField()
 
 chess_field.print_field()
 
-b = Bishop('5d', 'bishop', 'B')
+b = Bishop('3d', 'bishop', 'B')
 print(b._available_moves(chess_field))
