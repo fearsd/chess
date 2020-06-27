@@ -48,6 +48,16 @@ class Bishop(BaseFigure):
                 if (int(c[0]) < int(en[-1][0]) and ord(c[1]) > ord(en[-1][1])) and (ord(c[1]) - ord(en[-1][1]) == 1):
                     en.append(c)
 
+        i = 0
+        while i <= len(en) - 1:
+            if isinstance(field.field[en[i]], BaseFigure):
+                try:
+                    del en[i + 1]
+                except IndexError:
+                    break
+            else:
+                i += 1
+        print(en)
 
         es = []
         try:
