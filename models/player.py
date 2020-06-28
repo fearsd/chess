@@ -19,6 +19,7 @@ class Player:
     def make_move(self, field, enemy):
         if field.is_game_finished():
             print(field.get_winner(), 'wins')
+            field.print_field()
             return
         field.print_field()
         self.figures = self._get_figures(field)
