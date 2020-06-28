@@ -65,6 +65,30 @@ class GameField:
             print('\n')
             j += 1
 
+    def is_game_finished(self):
+        kings = []
+        for f in list(self.field.keys()):
+            try:
+                if self.field[f].short_name == 'K':
+                    kings.append(f)
+            except AttributeError:
+                pass
+
+        if len(kings) == 1:
+            return True
+        else:
+            return False
+
+    def get_winner(self):
+        winner = ''
+        for f in list(self.field.keys()):
+            try:
+                if self.field[f].short_name == 'K':
+                    winner = f
+            except AttributeError:
+                pass
+        
+        return self.field[winner].team
 
     def __put_coords_in_list(self):
         keys = []

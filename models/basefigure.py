@@ -12,10 +12,8 @@ class BaseFigure:
     def _set_team(self):
         if int(self.coord[0]) in WHITE:
             return 'white'
-        elif int(self.coord[0]) in BLACK:
-            return 'black'
         else:
-            return 'white'
+            return 'black'
 
     def perfome_move(self, field, coords_to):
         available_coords_to_move = self._available_moves(field)
@@ -35,9 +33,6 @@ class BaseFigure:
                 field.field[coords_to] = self
                 field.field[old_coords] = '.'
                 return 'Moved!'
-
-    def is_game_finished(self):
-        pass
 
     def __str__(self):
         return self.full_name + ' ' + self.coord
