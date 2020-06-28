@@ -1,3 +1,6 @@
+import random
+import time
+
 class Player:
 
     def __init__(self, username, team, field):
@@ -43,4 +46,27 @@ class Player:
 
         field.field[c].perform_move(field, d)
 
+        enemy.make_move(field, self)
+
+class Computer(Player):
+    
+    def make_move(self, field, enemy):
+        if field.is_game_finished():
+            print(field.get_winner(), 'wins')
+            field.print_field()
+            return
+        self.figures = self._get_figures(field)
+        print('Computer makes his move...')
+        time.sleep(3)
+        figure = random.choice(self.figures)
+        while len(field.field[figure]._available_moves(field)) == 0:
+            figure = random.choice(self.figures)
+        print('Computer choosed {} on {}'.format(field.field[figure].full_name, figure))
+        print('Computer thinks...')
+        time.sleep(2)
+        coord = random.choice(field.field[figure]._available_moves(field))
+        print('Computer is moving {} to {}'.format(field.field[figure].full_name, coord))
+        time.sleep(2)
+        field.field[figure].perform_move(field, coord)
+        
         enemy.make_move(field, self)

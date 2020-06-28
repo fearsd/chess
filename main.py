@@ -1,10 +1,10 @@
 from models.gamefield import GameField
-from models.player import Player
+from models.player import Player, Computer
 
 def game_init():
     chess = GameField()
     white_player = Player('user1', 'white', chess)
-    black_player = Player('user2', 'black', chess)
+    black_player = Computer('AI', 'black', chess)
 
     return chess, white_player, black_player
 
