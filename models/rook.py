@@ -50,6 +50,16 @@ class Rook(BaseFigure):
             for c in keys:
                 if (int(c[0]) > int(down[-1][0]) and c[1] == down[-1][1]):
                     down.append(c)
+
+        i = 0
+        while i <= len(down) - 1:
+            if isinstance(field.field[down[i]], BaseFigure):
+                try:
+                    del down[i + 1]
+                except IndexError:
+                    break
+            else:
+                i += 1
         
         moves += down.copy()
 
@@ -68,6 +78,16 @@ class Rook(BaseFigure):
                 if (int(c[0]) == int(left[-1][0]) and ord(c[1]) < ord(left[-1][1])):
                     left.append(c)
 
+        i = 0
+        while i <= len(left) - 1:
+            if isinstance(field.field[left[i]], BaseFigure):
+                try:
+                    del left[i + 1]
+                except IndexError:
+                    break
+            else:
+                i += 1
+
         moves += left.copy()
 
 
@@ -85,7 +105,16 @@ class Rook(BaseFigure):
                 if (int(c[0]) == int(right[-1][0]) and ord(c[1]) > ord(right[-1][1])):
                     right.append(c)
 
-        print(right)
+        i = 0
+        while i <= len(right) - 1:
+            if isinstance(field.field[right[i]], BaseFigure):
+                try:
+                    del right[i + 1]
+                except IndexError:
+                    break
+            else:
+                i += 1
+
         moves += right.copy()
 
         # # finding all coords whose rook can move to if these coord would be empty
