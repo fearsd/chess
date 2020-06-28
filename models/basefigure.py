@@ -22,7 +22,11 @@ class BaseFigure:
         if coords_to not in available_coords_to_move:
             return 'Not available move'
         else:
-            self.coord = coords_to
+            if isinstance(field.field[coords_to], BaseFigure):
+                self.coord = coords_to
+                killed = field.field[coords_to]
+                field.field[coords_to] = self
+                return 'Successfully killed {}'.format(killed)
             return 'Moved!'
 
     def __str__(self):

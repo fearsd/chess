@@ -1,4 +1,18 @@
-from .basefigure import BaseFigure
+from .bishop import Bishop
+from .king import King
+from .knight import Knight
+from .pawn import Pawn
+from .queen import Queen
+from .rook import Rook
+
+FIGURES = (
+    Bishop,
+    King,
+    Knight,
+    Pawn,
+    Queen,
+    Rook
+)
 
 class GameField:
 
@@ -14,27 +28,27 @@ class GameField:
 
                 # sets rooks for their places
                 if (n == 1 and l == 'a') or (n == 1 and l == 'h') or (n == 8 and l == 'a') or (n == 8 and l == 'h'):
-                    field[str(n) + l] = BaseFigure(str(n) + l, 'rook', 'R')
+                    field[str(n) + l] = Rook(str(n) + l, 'rook', 'R')
 
                 # sets knights for their places
                 elif (n == 1 and l == 'b') or (n == 1 and l == 'g') or (n == 8 and l == 'b') or (n == 8 and l == 'g'):
-                    field[str(n) + l] = BaseFigure(str(n) + l, 'knight', 'k')
+                    field[str(n) + l] = Knight(str(n) + l, 'knight', 'k')
 
                 # sets bishops for their places
                 elif (n == 1 and l == 'c') or (n == 1 and l == 'f') or (n == 8 and l == 'c') or (n == 8 and l == 'f'):
-                    field[str(n) + l] = BaseFigure(str(n) + l, 'bishop', 'B')
+                    field[str(n) + l] = Bishop(str(n) + l, 'bishop', 'B')
 
                 # sets queens for their places
                 elif (n == 1 and l == 'd') or (n == 8 and l == 'e'):
-                    field[str(n) + l] = BaseFigure(str(n) + l, 'queen', 'Q')
+                    field[str(n) + l] = Queen(str(n) + l, 'queen', 'Q')
 
                 # sets kings for their places
                 elif (n == 1 and l == 'e') or (n == 8 and l == 'd'):
-                    field[str(n) + l] = BaseFigure(str(n) + l, 'king', 'K')
+                    field[str(n) + l] = King(str(n) + l, 'king', 'K')
 
                 # sets pawns for their places
                 elif n == 2 or n == 7:
-                    field[str(n) + l] = BaseFigure(str(n) + l, 'pawn', 'p')
+                    field[str(n) + l] = Pawn(str(n) + l, 'pawn', 'p')
 
                 else:
                     field[str(n) + l] = '.'
@@ -52,7 +66,7 @@ class GameField:
         for i in range(0, 64, 8):
             print(j, end='     ')
             for key in self.keys[i:i+8]:
-                if isinstance(self.field[key], BaseFigure):
+                if isinstance(self.field[key], FIGURES):
                     print(self.field[key].short_name, end='    ')
                 else:
                     print(self.field[key], end='    ')
@@ -67,7 +81,3 @@ class GameField:
             keys.append(key)
         
         self.keys = keys
-
-    # this methhod will be deleted after making classes for figures
-    def perfom_move(self, x, y):
-        self.field[x], self.field[y] = self.field[y], self.field[x]
