@@ -1,4 +1,5 @@
 from .basefigure import BaseFigure
+from .gamefield import FIGURES
 
 class Pawn(BaseFigure):
 
@@ -9,78 +10,78 @@ class Pawn(BaseFigure):
         if self.team == 'white':
             if int(self.coord[0]) == 2:
                 try:
-                    if not isinstance(field.field[str(int(self.coord[0]) + 1) + self.coord[1]], BaseFigure):
+                    if not isinstance(field.field[str(int(self.coord[0]) + 1) + self.coord[1]], FIGURES):
                         moves.append(str(int(self.coord[0]) + 1) + self.coord[1])
-                        if not isinstance(field.field[str(int(self.coord[0]) + 2) + self.coord[1]], BaseFigure):
+                        if not isinstance(field.field[str(int(self.coord[0]) + 2) + self.coord[1]], FIGURES):
                             moves.append(str(int(self.coord[0]) + 2) + self.coord[1])
                 except KeyError:
                     pass
 
                 try:    
-                    if isinstance(field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1)], BaseFigure):
+                    if isinstance(field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1)], FIGURES):
                         moves.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1))
                 except KeyError:
                     pass
 
                 try:    
-                    if isinstance(field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1)], BaseFigure):
+                    if isinstance(field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1)], FIGURES):
                         moves.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1))
                 except KeyError:
                     pass
             else:
                 try:
-                    if not isinstance(field.field[str(int(self.coord[0]) + 1) + self.coord[1]], BaseFigure):
+                    if not isinstance(field.field[str(int(self.coord[0]) + 1) + self.coord[1]], FIGURES):
                         moves.append(str(int(self.coord[0]) + 1) + self.coord[1])
                 except KeyError:
                     pass
 
                 try:    
-                    if isinstance(field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1)], BaseFigure):
+                    if isinstance(field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1)], FIGURES):
                         moves.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) + 1))
                 except KeyError:
                     pass
 
                 try:    
-                    if isinstance(field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1)], BaseFigure):
+                    if isinstance(field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1)], FIGURES):
                         moves.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]) - 1))
                 except KeyError:
                     pass
         else:
             if int(self.coord[0]) == 7:
                 try:
-                    if not isinstance(field.field[str(int(self.coord[0]) - 1) + self.coord[1]], BaseFigure):
+                    if not isinstance(field.field[str(int(self.coord[0]) - 1) + self.coord[1]], FIGURES):
                         moves.append(str(int(self.coord[0]) + 1) + self.coord[1])
-                        if not isinstance(field.field[str(int(self.coord[0]) - 2) + self.coord[1]], BaseFigure):
+                        if not isinstance(field.field[str(int(self.coord[0]) - 2) + self.coord[1]], FIGURES):
                             moves.append(str(int(self.coord[0]) - 2) + self.coord[1])
                 except KeyError:
                     pass
 
                 try:    
-                    if isinstance(field.field[str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1)], BaseFigure):
+                    if isinstance(field.field[str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1)], FIGURES):
                         moves.append(str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1))
                 except KeyError:
                     pass
 
                 try:    
-                    if isinstance(field.field[str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) - 1)], BaseFigure):
+                    if isinstance(field.field[str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) - 1)], FIGURES):
                         moves.append(str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) - 1))
                 except KeyError:
                     pass
             else:
                 try:
-                    if not isinstance(field.field[str(int(self.coord[0]) - 1) + self.coord[1]], BaseFigure):
+                    if not isinstance(field.field[str(int(self.coord[0]) - 1) + self.coord[1]], FIGURES):
                         moves.append(str(int(self.coord[0]) - 1) + self.coord[1])
                 except KeyError:
                     pass
 
                 try:    
-                    if isinstance(field.field[str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1)], BaseFigure):
+                    if isinstance(field.field[str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1)], FIGURES):
                         moves.append(str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) + 1))
                 except KeyError:
                     pass
 
                 try:    
-                    if isinstance(field.field[str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) - 1)], BaseFigure):
+                    if isinstance(field.field[str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) - 1)], FIGURES):
                         moves.append(str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) - 1))
                 except KeyError:
                     pass
