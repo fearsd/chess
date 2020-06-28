@@ -49,7 +49,7 @@ class Pawn(BaseFigure):
             if int(self.coord[0]) == 7:
                 try:
                     if not isinstance(field.field[str(int(self.coord[0]) - 1) + self.coord[1]], field.figures):
-                        moves.append(str(int(self.coord[0]) + 1) + self.coord[1])
+                        moves.append(str(int(self.coord[0]) - 1) + self.coord[1])
                         if not isinstance(field.field[str(int(self.coord[0]) - 2) + self.coord[1]], field.figures):
                             moves.append(str(int(self.coord[0]) - 2) + self.coord[1])
                 except KeyError:

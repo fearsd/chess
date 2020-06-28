@@ -9,7 +9,7 @@ class Player:
         figures = []
         for k in list(field.field.keys()):
             try:
-                if self.field[k].team == self.team:
+                if field.field[k].team == self.team:
                     figures.append(k)
             except AttributeError:
                 pass
@@ -18,17 +18,18 @@ class Player:
 
     def make_move(self, field, enemy):
         if field.is_game_finished():
-            print(field.get_winner)
+            print(field.get_winner(), 'wins')
             return
         field.print_field()
         print()
         print('Your figures: ')
         for f in self.figures:
-            print(f, '-', field.field[f].full_name, end=' ')
+            print(f, '-', field.field[f].full_name)
         c = ''
         while c not in self.figures:
             c = input('Enter coords of figure which you want to move: ')
 
+        print('Available moves: ', end=' ')
         for move in field.field[c]._available_moves(field):
             print(move, end=' ')
 
