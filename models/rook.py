@@ -12,7 +12,7 @@ class Rook(BaseFigure):
 
         top = []
         try:
-            if field.field[str(int(self.coord[0]) - 1) + self.coord[1]].team == self.team:
+            if field.field[str(int(self.coord[0]) - 1) + self.coord[1]].team == self.team or field.field[str(int(self.coord[0]) - 1) + self.coord[1]].team != self.team:
                 top.append(str(int(self.coord[0]) - 1) + self.coord[1])
         except AttributeError as e:
             top.append(str(int(self.coord[0]) - 1) + self.coord[1])
@@ -37,7 +37,7 @@ class Rook(BaseFigure):
 
         down = []
         try:
-            if field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]))].team == self.team:
+            if field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]))].team == self.team or field.field[str(int(self.coord[0]) + 1) + chr(ord(self.coord[1]))].team != self.team:
                 down.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1])))
         except AttributeError as e:
             down.append(str(int(self.coord[0]) + 1) + chr(ord(self.coord[1])))
@@ -62,7 +62,7 @@ class Rook(BaseFigure):
 
         left = []
         try:
-            if field.field[str(int(self.coord[0])) + chr(ord(self.coord[1]) - 1)].team == self.team:
+            if field.field[str(int(self.coord[0])) + chr(ord(self.coord[1]) - 1)].team == self.team or field.field[str(int(self.coord[0])) + chr(ord(self.coord[1]) - 1)].team != self.team:
                 left.append(str(int(self.coord[0])) + chr(ord(self.coord[1]) - 1))
         except AttributeError as e:
             left.append(str(int(self.coord[0])) + chr(ord(self.coord[1]) - 1))
@@ -87,7 +87,7 @@ class Rook(BaseFigure):
 
         right = []
         try:
-            if field.field[str(int(self.coord[0])) + chr(ord(self.coord[1]) + 1)].team == self.team:
+            if field.field[str(int(self.coord[0])) + chr(ord(self.coord[1]) + 1)].team == self.team or field.field[str(int(self.coord[0])) + chr(ord(self.coord[1]) - 1)].team != self.team:
                 right.append(str(int(self.coord[0])) + chr(ord(self.coord[1]) + 1))
         except AttributeError as e:
             right.append(str(int(self.coord[0])) + chr(ord(self.coord[1]) + 1))

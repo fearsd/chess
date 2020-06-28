@@ -21,6 +21,8 @@ class Player:
             print(field.get_winner(), 'wins')
             return
         field.print_field()
+        self.figures = self._get_figures(field)
+        print(self.username + "'s move")
         print()
         print('Your figures: ')
         for f in self.figures:
@@ -33,11 +35,11 @@ class Player:
         for move in field.field[c]._available_moves(field):
             print(move, end=' ')
 
+        print()
         d = ''
         while d not in field.field[c]._available_moves(field):
             d = input('Enter coord: ')
 
         field.field[c].perform_move(field, d)
 
-        self.figures = self._get_figures(field)
         enemy.make_move(field, self)
