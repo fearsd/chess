@@ -113,5 +113,15 @@ class Bishop(BaseFigure):
         moves += es.copy()
         moves += ws.copy()
 
+        i = 0
+        while i <= len(moves) - 1:
+            if isinstance(field.field[moves[i]], BaseFigure):
+                if field.field[moves[i]].team == self.team:
+                    del moves[i]
+                else:
+                    i += 1
+            else:
+                i += 1
+
 
         return moves
