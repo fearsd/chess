@@ -82,9 +82,10 @@ class Rook(BaseFigure):
 
         if not len(right) == 0:
             for c in keys:
-                if (int(c[0]) == int(right[-1][0]) and ord(c[1]) > ord(left[-1][1])):
+                if (int(c[0]) == int(right[-1][0]) and ord(c[1]) > ord(right[-1][1])):
                     right.append(c)
 
+        print(right)
         moves += right.copy()
 
         # # finding all coords whose rook can move to if these coord would be empty
