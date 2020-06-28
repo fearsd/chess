@@ -79,4 +79,13 @@ class Knight(BaseFigure):
         }
     
     def _available_moves(self, field):
-        pass
+        
+        moves = []
+        for m in self.mov[self.coord]:
+            try:
+                if not self.team == field.field[m].team:
+                    moves.append(m)
+            except AttributeError:
+                moves.append(m)
+
+        return moves
