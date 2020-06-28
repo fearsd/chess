@@ -23,11 +23,18 @@ class BaseFigure:
             return 'Not available move'
         else:
             if isinstance(field.field[coords_to], BaseFigure):
+                old_coords = self.coord
                 self.coord = coords_to
                 killed = field.field[coords_to]
                 field.field[coords_to] = self
+                field.field[old_coords] = '.'
                 return 'Successfully killed {}'.format(killed)
-            return 'Moved!'
+            else:
+                old_coords = self.coord
+                self.coord = coords_to
+                field.field[coords_to] = self
+                field.field[old_coords] = '.'
+                return 'Moved!'
 
     def __str__(self):
         return self.full_name + ' ' + self.coord
