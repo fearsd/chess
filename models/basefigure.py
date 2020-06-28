@@ -15,7 +15,7 @@ class BaseFigure:
         else:
             return 'black'
 
-    def perfome_move(self, field, coords_to):
+    def perform_move(self, field, coords_to):
         available_coords_to_move = self._available_moves(field)
         if coords_to not in available_coords_to_move:
             return 'Not available move'
