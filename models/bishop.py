@@ -1,5 +1,4 @@
 from .basefigure import BaseFigure
-from .gamefield import FIGURES
 
 class Bishop(BaseFigure):
 
@@ -26,7 +25,7 @@ class Bishop(BaseFigure):
 
         i = 0
         while i <= len(wn) - 1:
-            if isinstance(field.field[wn[i]], FIGURES):
+            if isinstance(field.field[wn[i]], field.figures):
                 try:
                     del wn[i + 1]
                 except IndexError:
@@ -51,7 +50,7 @@ class Bishop(BaseFigure):
 
         i = 0
         while i <= len(en) - 1:
-            if isinstance(field.field[en[i]], FIGURES):
+            if isinstance(field.field[en[i]], field.figures):
                 try:
                     del en[i + 1]
                 except IndexError:
@@ -75,7 +74,7 @@ class Bishop(BaseFigure):
 
         i = 0
         while i <= len(es) - 1:
-            if isinstance(field.field[es[i]], FIGURES):
+            if isinstance(field.field[es[i]], field.figures):
                 try:
                     del es[i + 1]
                 except IndexError:
@@ -100,7 +99,7 @@ class Bishop(BaseFigure):
 
         i = 0
         while i <= len(ws) - 1:
-            if isinstance(field.field[ws[i]], FIGURES):
+            if isinstance(field.field[ws[i]], field.figures):
                 try:
                     del ws[i + 1]
                 except IndexError:
@@ -116,7 +115,7 @@ class Bishop(BaseFigure):
 
         i = 0
         while i <= len(moves) - 1:
-            if isinstance(field.field[moves[i]], FIGURES):
+            if isinstance(field.field[moves[i]], field.figures):
                 if field.field[moves[i]].team == self.team:
                     del moves[i]
                 else:

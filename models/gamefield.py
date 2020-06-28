@@ -5,20 +5,12 @@ from .pawn import Pawn
 from .queen import Queen
 from .rook import Rook
 
-FIGURES = (
-    Bishop,
-    King,
-    Knight,
-    Pawn,
-    Queen,
-    Rook
-)
-
 class GameField:
 
     def __init__(self):
         self.letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
         self.field = self._create_new_field()
+        self.figures = (Bishop, King, Knight, Pawn, Queen, Rook)
 
     def _create_new_field(self):
         field = {} 
@@ -66,7 +58,7 @@ class GameField:
         for i in range(0, 64, 8):
             print(j, end='     ')
             for key in self.keys[i:i+8]:
-                if isinstance(self.field[key], FIGURES):
+                if isinstance(self.field[key], self.figures):
                     print(self.field[key].short_name, end='    ')
                 else:
                     print(self.field[key], end='    ')

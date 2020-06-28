@@ -1,5 +1,4 @@
 from .basefigure import BaseFigure
-from .gamefield import FIGURES
 
 class Rook(BaseFigure):
 
@@ -27,7 +26,7 @@ class Rook(BaseFigure):
 
         i = 0
         while i <= len(top) - 1:
-            if isinstance(field.field[top[i]], FIGURES):
+            if isinstance(field.field[top[i]], field.figures):
                 try:
                     del top[i + 1]
                 except IndexError:
@@ -52,7 +51,7 @@ class Rook(BaseFigure):
 
         i = 0
         while i <= len(down) - 1:
-            if isinstance(field.field[down[i]], BaseFigure):
+            if isinstance(field.field[down[i]], field.figures):
                 try:
                     del down[i + 1]
                 except IndexError:
@@ -77,7 +76,7 @@ class Rook(BaseFigure):
 
         i = 0
         while i <= len(left) - 1:
-            if isinstance(field.field[left[i]], FIGURES):
+            if isinstance(field.field[left[i]], field.figures):
                 try:
                     del left[i + 1]
                 except IndexError:
@@ -102,7 +101,7 @@ class Rook(BaseFigure):
 
         i = 0
         while i <= len(right) - 1:
-            if isinstance(field.field[right[i]], FIGURES):
+            if isinstance(field.field[right[i]], field.figures):
                 try:
                     del right[i + 1]
                 except IndexError:
@@ -118,7 +117,7 @@ class Rook(BaseFigure):
 
         i = 0
         while i <= len(moves) - 1:
-            if isinstance(field.field[moves[i]], FIGURES):
+            if isinstance(field.field[moves[i]], field.figures):
                 if field.field[moves[i]].team == self.team:
                     del moves[i]
                 else:
