@@ -3,10 +3,11 @@ from models.gamefield import GameField
 from models.rook import Rook
 from models.king import King
 from models.bishop import Bishop
+from models.queen import Queen
 
 chess_field = GameField()
 
 chess_field.print_field()
 
-r = Rook('5d', 'rook', 'R')
-print(r._available_moves(chess_field))
+q = Queen('5d', 'queen', 'Q')
+print(q._available_moves(chess_field))
