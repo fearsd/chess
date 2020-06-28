@@ -36,5 +36,8 @@ class BaseFigure:
                 field.field[old_coords] = '.'
                 return 'Moved!'
 
+    def is_game_finished(self):
+        pass
+
     def __str__(self):
         return self.full_name + ' ' + self.coord
