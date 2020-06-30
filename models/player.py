@@ -44,7 +44,7 @@ class Player:
         while d not in field.field[c]._available_moves(field):
             d = input('Enter coord: ')
 
-        field.field[c].perform_move(field, d)
+        print(field.field[c].perform_move(field, d))
 
         enemy.make_move(field, self)
 
@@ -68,7 +68,7 @@ class Computer(Player):
         coord = random.choice(field.field[figure]._available_moves(field))
         print('{} is moving {} to {}'.format(self.username, field.field[figure].full_name, coord))
         time.sleep(2)
-        field.field[figure].perform_move(field, coord)
+        print(field.field[figure].perform_move(field, coord))
         input('Enter any key to continue...')
         
         enemy.make_move(field, self)
