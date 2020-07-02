@@ -1,7 +1,7 @@
 # Chess game
 
 ### Installing
-### Note: you should have python 3.7 and above
+**Note: you should have python 3.7 and above**
 
 ### Cloning project
 `$ git clone https://github.com/fearsd/chess.git`
