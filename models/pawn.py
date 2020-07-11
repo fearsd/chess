@@ -84,5 +84,15 @@ class Pawn(BaseFigure):
                         moves.append(str(int(self.coord[0]) - 1) + chr(ord(self.coord[1]) - 1))
                 except KeyError:
                     pass
+
+        i = 0
+        while i <= len(moves) - 1:
+            if isinstance(field.field[moves[i]], field.figures):
+                if field.field[moves[i]].team == self.team:
+                    del moves[i]
+                else:
+                    i += 1
+            else:
+                i += 1
         
         return moves

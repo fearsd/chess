@@ -1,5 +1,4 @@
-from models.gamefield import GameField
-from models.player import Player, Computer
+from models import Player, Computer, GameField
 
 def game_init():
     chess = GameField()
